@@ -149,11 +149,18 @@ http://127.0.0.1:8000/admin
 
 ### 1. Создан парсер
     procurement/utils/import_parser.py
+
+   - Логика работы:
+     * Каждый товар из goods создает:
+     * Запись в Product (если не существует)
+     * ProductInfo с ценами и остаткам
+     * ProductParameter для характеристик
+   
 ### 2. Создайте view 
     procurement/views/suppliers.py
 ### 3. Подключен URL
     procurement/urls.py
-### 4. Включн в основной urls.py
+### 4. Включить в основной urls.py
 
 # Этап 4: Реализация API Views
 ## Цель
