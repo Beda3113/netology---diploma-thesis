@@ -190,8 +190,7 @@ http://127.0.0.1:8000/admin
 Итоговая структура после выполнения 8 этапов "the path of least resistance"
 
 ```
-backend/                                # Корневая директория проекта
-├── .gitignore                          # Игнорируемые файлы
+backend/                                
 ├── requirements.txt                    # Зависимости Python
 ├── docker-compose.yml                  # Конфигурация Docker
 ├── Dockerfile                          # Настройка образа Docker
