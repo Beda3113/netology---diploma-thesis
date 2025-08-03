@@ -59,10 +59,47 @@
     AI-инструмент: Codeium
 
 
+
+
 # Этап 1: Создание и настройка проекта
 ## Цель
   Создать рабочее окружение и инициализировать Django-проект.
 ### 1. Fork репозитория
+
+Структура впроекта "the path of least resistance"
+```
+reference/
+├── backend/
+│   ├── __init__.py
+│   ├── admin.py            
+│   ├── apps.py
+│   ├── models.py           
+│   ├── serializers.py      
+│   ├── views.py            
+│   ├── urls.py             
+│   ├── signals.py          
+│   └── tests.py            
+│
+├── migrations/
+│   ├── 0001_initial.py
+│   ├── __init__.py
+│   └── __pycache__/
+│       ├── 0001_initial.cpython-310.pyc
+│       └── __init__.cpython-310.pyc
+│
+│
+│
+├── manage.py               
+├── netology_pd_diplom/    
+│   ├── settings.py         
+│   ├── urls.py             
+│   └── wsgi.py
+│   
+│
+├── requirements.txt       
+└── .gitignore
+```
+            
 ### 2. Клонируйть репозиторий
 ```
 git clone https://github.com/ВАШ_ЛОГИН/netology_pd_diplom.git
@@ -147,5 +184,50 @@ http://127.0.0.1:8000/admin
 # Этап 6: Админка заказов 
 # Этап 7: Асинхронные задачи
 # Этап 8: Docker-развёртывание
+
+<p align="right">(<a href="#readme-top">Вернуться к началу</a>)</p>
+
+Итоговая структура после выполнения 8 этапов "the path of least resistance"
+```
+backend/
+├── __init__.py
+├── admin.py
+├── apps.py
+├── models.py
+├── serializers.py
+├── views/
+│   ├── __init__.py
+│   ├── auth.py            # Регистрация и авторизация
+│   ├── cart.py            # Работа с корзиной
+│   ├── orders.py          # Управление заказами
+│   ├── suppliers.py       # API для поставщиков
+│   └── admin_views.py     # Админские функции
+├── urls.py
+├── tasks.py               # Celery-задачи
+├── utils/
+│   ├── __init__.py
+│   ├── import_parser.py   # Парсер YAML
+│   └── notifications.py   # Отправка уведомлений
+├── migrations/
+│   ├── __init__.py
+│   └── 0001_initial.py
+│   
+├── tests/
+│   ├── __init__.py
+│   ├── test_models.py
+│   ├── test_views.py
+│   └── test_utils.py
+├── signals.py             # Сигналы Django
+├── templates/
+│   └── emails/
+│       ├── order_created.html
+│       └── status_changed.html
+└── management/
+    ├── __init__.py
+    └── commands/
+        ├── __init__.py
+        └── import_products.py  # Кастомная команда
+                       
+```
 
 <p align="right">(<a href="#readme-top">Вернуться к началу</a>)</p>
