@@ -102,7 +102,7 @@ reference/
             
 ### 2. Клонируйть репозиторий
 ```
-git clone https://github.com/ВАШ_ЛОГИН/netology_pd_diplom.git
+git clone https://github.com/....../netology_pd_diplom.git
 cd netology_pd_diplom
 ```
 ### 3. Создайть виртуальное окружение
