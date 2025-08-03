@@ -121,9 +121,9 @@ class Shop(models.Model):
         return self.name
 
 
-# ========================
+
 # МОДЕЛЬ КАТЕГОРИИ ТОВАРОВ
-# ========================
+
 class Category(models.Model):
     name = models.CharField(max_length=40, verbose_name='Название')
     shops = models.ManyToManyField(Shop, verbose_name='Магазины', related_name='categories', blank=True)
