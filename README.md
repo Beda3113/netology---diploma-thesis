@@ -52,7 +52,7 @@
 
 # ПО
 
-    Python 3.13
+    Python 
     Git
     Docker + Docker Compose
     IDE: VS Code
