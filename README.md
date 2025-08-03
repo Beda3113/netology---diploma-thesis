@@ -190,18 +190,18 @@ http://127.0.0.1:8000/admin
 Итоговая структура после выполнения 8 этапов "the path of least resistance"
 
 ```
-backend/                               # Корневая директория проекта
+backend/                                # Корневая директория проекта
 ├── .gitignore                          # Игнорируемые файлы
 ├── requirements.txt                    # Зависимости Python
 ├── docker-compose.yml                  # Конфигурация Docker
 ├── Dockerfile                          # Настройка образа Docker
 │
-├── procurement_backend/                # Основной Django-проект (может называться netology_pd_diplom)
+├── procurement_backend/                # Основной Django-проект 
 │   ├── __init__.py
-│   ├── settings.py                     ← Главные настройки (INSTALLED_APPS, DRF, Celery и др.)
+│   ├── settings.py                     ← Главные настройки 
 │   ├── urls.py                         ← Главные URL (подключение api/ и других маршрутов)
 │   ├── wsgi.py                         # WSGI-конфигурация
-│   └── asgi.py                         # ASGI-конфигурация (опционально)
+│   └── asgi.py                         # ASGI-конфигурация 
 │
 ├── procurement/                        # Приложение procurement
 │   ├── __init__.py
@@ -223,8 +223,8 @@ backend/                               # Корневая директория �
 │   │   ├── import_parser.py            ← Парсер YAML для товаров
 │   │   └── notifications.py            # Отправка уведомлений
 │   ├── migrations/                     ← Миграции БД
-│   │   ├── __init__.py
-│   │   └── 000X_...py                  # Файлы миграций
+│   │   └── __init__.py                 # Файлы миграций
+│   │                 
 │   ├── tests/                          # Тесты
 │   │   ├── __init__.py
 │   │   ├── test_models.py
@@ -240,9 +240,7 @@ backend/                               # Корневая директория �
 │           ├── __init__.py
 │           └── import_products.py      # Импорт товаров через команду
 │
-├── db.sqlite3                          # SQLite-база (если используется)
 ├── static/                             # Статические файлы (CSS, JS)
-├── media/                              # Загружаемые файлы (изображения товаров)
 └── .env                                # Переменные окружения (SECRET_KEY, DB_URL и др.)
 ```
 
