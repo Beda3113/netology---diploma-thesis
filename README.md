@@ -251,3 +251,65 @@ backend/
 ```
 
 <p align="right">(<a href="#readme-top">Вернуться к началу</a>)</p>
+
+# Инструкция по развертыванию проекта
+
+## 1. Клонирование репозитория
+```
+git clone https://github.com/yourusername/procurement_backend.git
+cd procurement_backend
+```
+
+## 2. Настройка окружения
+```
+python -m venv venv
+source venv/bin/activate  # Linux/MacOS
+# или 
+venv\Scripts\activate  # Windows
+```
+## 3. Установка зависимостей
+```
+pip install -r requirements.txt
+```
+## 4. Настройка переменных окружения
+```
+cp .env.example .env
+# Отредактируйте .env по необходимости
+```
+## 5. Запуск с Docker
+
+```
+docker-compose up -d --build
+```
+## 6. Миграции и создание суперпользователя
+
+```
+docker-compose exec web python manage.py migrate
+docker-compose exec web python manage.py createsuperuser
+```
+## 7. Запуск без Docker
+```
+# Настройте БД PostgreSQL и Redis
+python manage.py migrate
+python manage.py runserver
+
+# В другом терминале:
+celery -A procurement_backend worker --loglevel=info
+```
+## 8. Доступ к API
+
+Документация API:
+```
+http://localhost:8000/api/docs/
+```
+
+Админ-панель:
+```
+http://localhost:8000/admin/
+```
+9. Тестирование
+```
+python manage.py test
+```
+
+<p align="right">(<a href="#readme-top">Вернуться к началу</a>)</p>
