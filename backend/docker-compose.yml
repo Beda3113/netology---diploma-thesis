@@ -1,0 +1,56 @@
+# docker-compose.yml
+
+
+services:
+  web:
+    build: .
+    command: gunicorn --bind 0.0.0.0:8000 procurement_backend.wsgi
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      - redis
+      - db
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - REDIS_URL=redis://redis:6379/0
+
+  db:
+    image: postgres:13
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=postgres
+      - POSTGRES_DB=postgres
+
+  redis:
+    image: redis:6
+
+  celery:
+    build: .
+    command: celery -A procurement_backend worker --loglevel=info
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - REDIS_URL=redis://redis:6379/0
+
+  celery-beat:
+    build: .
+    command: celery -A procurement_backend beat --loglevel=info
+    depends_on:
+      - redis
+      - db
+    volumes:
+      - .:/app
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@db:5432/postgres
+      - REDIS_URL=redis://redis:6379/0
+
+volumes:
+  postgres_data:
