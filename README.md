@@ -256,8 +256,8 @@ backend/
 
 ## 1. Клонирование репозитория
 ```
-git clone https://github.com/yourusername/procurement_backend.git
-cd procurement_backend
+git clone https://github.com/Beda3113/netology---diploma-thesis
+cd backend
 ```
 
 ## 2. Настройка окружения
