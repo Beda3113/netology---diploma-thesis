@@ -1,9 +1,32 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
+from django.http import JsonResponse
+from django.core import serializers
+import json
 
 from procurement.models import User, Shop, Category, Product, ProductInfo, Parameter, ProductParameter, Order, OrderItem, \
     Contact, ConfirmEmailToken
 
+
+@admin.action(description="Экспорт товаров в JSON")
+def export_products_json(modeladmin, request, queryset):
+    data = []
+    for product_info in queryset:
+        data.append({
+            "product": product_info.product.name,
+            "category": product_info.product.category.name,
+            "shop": product_info.shop.name,
+            "price": product_info.price,
+            "quantity": product_info.quantity,
+            "parameters": {
+                pp.parameter.name: pp.value
+                for pp in product_info.product_parameters.all()
+            }
+        })
+    return JsonResponse(data, safe=False)
+
+class ProductInfoAdmin(admin.ModelAdmin):
+    actions = [export_products_json]
 
 @admin.register(User)
 class CustomUserAdmin(UserAdmin):
